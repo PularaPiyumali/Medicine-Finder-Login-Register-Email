@@ -16,27 +16,25 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.*;
 
 @Slf4j
 @Service
-public class UserService implements UserDetailsService, Serializable {
+@AllArgsConstructor
+public class UserService implements UserDetailsService {
 
     private static final long serialVersionUID = -2550185165626007488L;
     public static final long JWT_TOKEN_VALIDITY = 5 * 60 * 60;
 
+    @Autowired
     private JwtTokenUtil jwtTokenUtil;
 
     private final static String USER_NOT_FOUND_MSG =
             "user with email %s not found";
 
-    @Autowired
     private UserRepository userRepository;
-    @Autowired
     private BCryptPasswordEncoder bCryptPasswordEncoder;
-    @Autowired
     private ConfirmationTokenService confirmationTokenService;
 
     @Override
@@ -57,7 +55,7 @@ public class UserService implements UserDetailsService, Serializable {
 
         userRepository.save(user);
 
-        final String token = jwtTokenUtil.generateToken(user);
+        String token = jwtTokenUtil.generateToken(user);
         Confirmation confirmationToken = new Confirmation(token, LocalDateTime.now(),LocalDateTime.now().plusMinutes(15),user);
         confirmationTokenService.saveConfirmationToken(confirmationToken);
         return token;
@@ -71,6 +69,7 @@ public class UserService implements UserDetailsService, Serializable {
             userRepository.save(user);
         });
     }
+
 
 
 }

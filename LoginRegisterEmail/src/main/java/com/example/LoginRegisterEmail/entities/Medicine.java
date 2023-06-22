@@ -1,7 +1,5 @@
 package com.example.LoginRegisterEmail.entities;
 
-import com.example.LoginRegisterEmail.entities.Generic;
-import com.example.LoginRegisterEmail.entities.Pharmacy;
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.List;
@@ -24,10 +22,10 @@ public class Medicine {
     private double medicinePrice;
     private int medicineQuantity;
 
-    @OneToMany(mappedBy = "pharmacyagent",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-    Set<Pharmacy> pharmacy;
-
-    @OneToMany(mappedBy = "generic",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<Generic> genericMedicine;
+//    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+//    Set<Pharmacy> pharmacy;
+//
+//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+//    private List<Generic> genericMedicine;
 
 }

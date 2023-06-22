@@ -3,11 +3,10 @@ package com.example.LoginRegisterEmail.jwt;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
-import java.io.Serializable;
 
 @AllArgsConstructor
 @NoArgsConstructor
-public class JwtRequest implements Serializable {
+public class JwtRequest {
 
     private static final long serialVersionUID = 5926468583005150707L;
 

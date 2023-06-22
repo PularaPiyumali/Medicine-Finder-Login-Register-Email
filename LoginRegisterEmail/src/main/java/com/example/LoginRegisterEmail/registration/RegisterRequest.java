@@ -1,22 +1,29 @@
 package com.example.LoginRegisterEmail.registration;
 
 
+import com.example.LoginRegisterEmail.entities.UserRole;
 import lombok.*;
 
+@Data
+@Builder
 @Getter
 @Setter
 public class RegisterRequest {
-    private String FirstName;
+    private String firstName;
     private String lastName;
     private Integer mobileNo;
     private String email;
     private String password;
+    private UserRole role;
 
-    public RegisterRequest(String firstName, String lastName, Integer mobileNo, String email, String password) {
+    public RegisterRequest(String firstName, String lastName, Integer mobileNo, String email, String password, UserRole role) {
         this.setFirstName(firstName);
         this.setLastName(lastName);
         this.setMobileNo(mobileNo);
         this.setEmail(email);
         this.setPassword(password);
+        this.setRole(role);
     }
+
+
 }

@@ -6,8 +6,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-
-import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -26,10 +24,10 @@ public class Pharmacy {
     @Column(name = "pharmacyName")
     private String pharmacyName;
 
-//    @ManyToOne(cascade = CascadeType.ALL)
+//    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 //    @JoinColumn(name = "pharmacyLocation")
-//    private Location pharmacyLocation;
-
-    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
-    Set<User> user;
+//    private Set<Location> pharmacyLocation;
+//
+//    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+//    Set<User> user;
 }
