@@ -21,16 +21,14 @@ public class Confirmation {
     @Column(nullable = false)
     private String token;
 
-    @Column(nullable = false)
     private LocalDateTime createdAt;
 
-    @Column(nullable = false)
     private LocalDateTime expiresAt;
 
     private LocalDateTime confirmedAt;
 
     @ManyToOne
-    @JoinColumn(nullable = false, name = "user_id")
+    @JoinColumn(name = "user_id")
     private User user;
 
     public Confirmation(String token, LocalDateTime createdAt, LocalDateTime expiresAt, User user) {

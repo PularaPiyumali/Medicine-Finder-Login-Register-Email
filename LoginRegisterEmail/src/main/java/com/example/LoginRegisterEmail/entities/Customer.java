@@ -13,7 +13,7 @@ public class Customer {
     @Column(name = "customerId")
     private Long customerId;
 
-//    @OneToMany(cascade = CascadeType.ALL)
-//    @JoinColumn(name = "userId")
-//    private List<User> user;
+//   @OneToMany(cascade = CascadeType.ALL)
+//   @JoinColumn(name = "userId")
+//   private List<User> user;
 }

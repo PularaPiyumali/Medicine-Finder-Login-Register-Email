@@ -28,4 +28,5 @@ public class Medicine {
 //    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 //    private List<Generic> genericMedicine;
 
+
 }

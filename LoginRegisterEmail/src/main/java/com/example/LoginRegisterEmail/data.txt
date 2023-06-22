@@ -5,3 +5,11 @@
 "mobileNo" : "0769878855",
 "password" : "1212"
 }
+
+{
+    "email": "sara@gmail.com",
+    "firstName": "Sara",
+    "lastName": "David",
+    "mobileNo": "0760878855",
+    "password": "1616"
+}
