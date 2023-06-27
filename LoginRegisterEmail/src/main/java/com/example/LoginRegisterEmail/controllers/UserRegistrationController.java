@@ -21,6 +21,7 @@ import java.util.Objects;
 @Slf4j
 @RestController
 @AllArgsConstructor
+@CrossOrigin
 @RequestMapping(path = "api/v1")
 public class UserRegistrationController {
 
@@ -60,4 +61,5 @@ public class UserRegistrationController {
             throw new Exception("INVALID_CREDENTIALS", e);
         }
     }
+
 }

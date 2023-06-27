@@ -1,6 +1,6 @@
 package com.example.LoginRegisterEmail.services;
 
-import com.example.LoginRegisterEmail.repoistory.UserRepository;
+import com.example.LoginRegisterEmail.repository.UserRepository;
 import com.example.LoginRegisterEmail.entities.User;
 import com.example.LoginRegisterEmail.jwt.JwtTokenUtil;
 import com.example.LoginRegisterEmail.registration.token.Confirmation;
@@ -37,6 +37,7 @@ public class UserService implements UserDetailsService {
     private BCryptPasswordEncoder bCryptPasswordEncoder;
     private ConfirmationTokenService confirmationTokenService;
 
+
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         log.info(Util.FIND_BY_EMAIL);
@@ -69,7 +70,5 @@ public class UserService implements UserDetailsService {
             userRepository.save(user);
         });
     }
-
-
 
 }

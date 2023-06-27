@@ -3,7 +3,6 @@ package com.example.LoginRegisterEmail.jwt;
 import java.io.IOException;
 
 import com.example.LoginRegisterEmail.entities.User;
-import com.example.LoginRegisterEmail.services.UserService;
 import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -21,7 +20,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 @AllArgsConstructor
 public class JwtRequestFilter extends OncePerRequestFilter {
 
-    private UserService userService;
+    private UserDetailsService userService;
     private JwtTokenUtil jwtTokenUtil;
 
     @Override

@@ -18,18 +18,19 @@ public class Location {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "locationId")
     private Long locationId;
 
-    @Column(name = "address")
     private String address;
 
-    @Column(name = "city")
     private String city;
 
-    @Column(name = "latitude")
     private BigDecimal latitude;
 
-    @Column(name = "longitude")
     private BigDecimal longitude;
+
+    private Long pharmacyId;
+
+    //@ManyToOne (cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    //@JoinColumn(name = "pharmacy_id", referencedColumnName = "locationId")
+    //private Pharmacy pharmacy;
 }

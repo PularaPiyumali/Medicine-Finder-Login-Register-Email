@@ -1,6 +1,6 @@
 package com.example.LoginRegisterEmail.security.config;
 
-import com.example.LoginRegisterEmail.repoistory.UserRepository;
+import com.example.LoginRegisterEmail.repository.UserRepository;
 import com.example.LoginRegisterEmail.security.PasswordEncoder;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;

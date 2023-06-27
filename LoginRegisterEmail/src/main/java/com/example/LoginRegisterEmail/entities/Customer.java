@@ -1,19 +1,25 @@
 package com.example.LoginRegisterEmail.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.util.List;
+import java.util.Set;
 
+@Data
 @Entity
 @Table(name = "customer")
 public class Customer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "customerId")
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private Long customerId;
+    private String customerUsername;
 
-//   @OneToMany(cascade = CascadeType.ALL)
-//   @JoinColumn(name = "userId")
-//   private List<User> user;
+//    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    @JsonIgnore
+//    private User user;
+
+    private Long userId;
 }

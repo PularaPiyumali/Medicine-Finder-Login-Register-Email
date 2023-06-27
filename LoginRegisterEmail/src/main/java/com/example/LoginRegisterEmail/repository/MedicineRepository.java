@@ -1,4 +1,4 @@
-package com.example.LoginRegisterEmail.repoistory;
+package com.example.LoginRegisterEmail.repository;
 
 import com.example.LoginRegisterEmail.entities.Medicine;
 import org.springframework.data.jpa.repository.JpaRepository;

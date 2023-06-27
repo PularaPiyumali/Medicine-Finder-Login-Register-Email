@@ -1,7 +1,10 @@
 package com.example.LoginRegisterEmail.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -17,16 +20,24 @@ public class Medicine {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long medicineId;
+
     private String medicineName;
+
     private String medicineDescription;
+
     private double medicinePrice;
+
     private int medicineQuantity;
 
-//    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-//    Set<Pharmacy> pharmacy;
-//
-//    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    private List<Generic> genericMedicine;
+    @ManyToMany (mappedBy = "addingMedicine")
+    private Set <Pharmacy> medicineSet = new HashSet<>();
+
+    //@ManyToOne(fetch = FetchType.EAGER)
+    //@JoinColumn(name = "generic_id", referencedColumnName = "medicineId")
+    //@JsonIgnore
+    //private Generic generic;
+
+    private Long genericId;
 
 
 }

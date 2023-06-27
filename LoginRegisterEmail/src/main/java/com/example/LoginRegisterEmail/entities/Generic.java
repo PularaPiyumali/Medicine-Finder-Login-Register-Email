@@ -6,6 +6,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.Set;
+
 @Getter
 @Setter
 @EqualsAndHashCode
@@ -16,9 +18,10 @@ public class Generic {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "generic_id")
     private Long genericId;
 
-    @Column(name = "name")
     private String name;
+
+    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    private Set <Medicine> medicine;
 }
