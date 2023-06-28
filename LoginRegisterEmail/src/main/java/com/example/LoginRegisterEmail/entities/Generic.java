@@ -22,6 +22,7 @@ public class Generic {
 
     private String name;
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    private Set <Medicine> medicine;
+//    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+//    private Set <Medicine> medicine;
+
 }

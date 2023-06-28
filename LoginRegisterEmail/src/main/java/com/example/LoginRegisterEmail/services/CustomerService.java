@@ -1,5 +1,6 @@
 package com.example.LoginRegisterEmail.services;
 
+import com.example.LoginRegisterEmail.Requests.CustomerRequest;
 import com.example.LoginRegisterEmail.Requests.UsersRequest;
 import com.example.LoginRegisterEmail.entities.Customer;
 import com.example.LoginRegisterEmail.repository.CustomerRepository;
@@ -15,7 +16,9 @@ public class CustomerService implements Serializable {
 
     private CustomerRepository customerRepository;
     private UserRepository userRepository;
-    public Customer addCustomerUsername(Customer customer) {
+    public Customer addCustomerUsername(CustomerRequest customerRequest) {
+        Customer customer = new Customer();
+        customer.setCustomerUsername(customerRequest.getCustomerUsername());
         return customerRepository.save(customer);
     }
 

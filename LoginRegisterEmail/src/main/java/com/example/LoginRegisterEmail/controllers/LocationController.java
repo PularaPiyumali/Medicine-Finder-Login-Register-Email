@@ -1,6 +1,7 @@
 package com.example.LoginRegisterEmail.controllers;
 
 import com.example.LoginRegisterEmail.Requests.LocationPharmacyRequest;
+import com.example.LoginRegisterEmail.Requests.LocationRequest;
 import com.example.LoginRegisterEmail.entities.Location;
 import com.example.LoginRegisterEmail.entities.Medicine;
 import com.example.LoginRegisterEmail.services.LocationService;
@@ -17,14 +18,14 @@ public class LocationController {
 
     private LocationService locationService;
 
-    @PostMapping("/location/add")
-    public ResponseEntity<Location> addLocation(@RequestBody Location location)
+    @PostMapping("/locations")
+    public ResponseEntity<Location> addLocation(@RequestBody LocationRequest locationRequest)
     {
-        Location newLocation = locationService.addLocation(location);
+        Location newLocation = locationService.addLocation(locationRequest);
         return new ResponseEntity<>(newLocation, HttpStatus.CREATED);
     }
 
-    @PutMapping("/location/{locationId}")
+    @PutMapping("/locations/{locationId}")
     public ResponseEntity<String> addPharmacyIdLocation (@PathVariable Long locationId , @RequestBody LocationPharmacyRequest locationPharmacyRequest) {
         try {
             locationService.addPharmacyIdLocation(locationId,locationPharmacyRequest);

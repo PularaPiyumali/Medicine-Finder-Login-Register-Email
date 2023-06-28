@@ -1,5 +1,6 @@
 package com.example.LoginRegisterEmail.controllers;
 
+import com.example.LoginRegisterEmail.Requests.CustomerRequest;
 import com.example.LoginRegisterEmail.Requests.UsersRequest;
 import com.example.LoginRegisterEmail.entities.Customer;
 import com.example.LoginRegisterEmail.services.CustomerService;
@@ -16,15 +17,15 @@ public class CustomerController {
 
     private CustomerService customerService;
 
-    @PostMapping("/customer/add")
-    public ResponseEntity<Customer> addCustomer(@RequestBody Customer customer)
+    @PostMapping("/customers")
+    public ResponseEntity<Customer> addCustomer(@RequestBody CustomerRequest customerRequest)
     {
-        Customer newCustomer = customerService.addCustomerUsername(customer);
+        Customer newCustomer = customerService.addCustomerUsername(customerRequest);
         return new ResponseEntity<>(newCustomer, HttpStatus.CREATED);
 
     }
 
-    @PutMapping("customer/{customerId}")
+    @PutMapping("customers/{customerId}")
     public ResponseEntity<String> addUserCustomer(@PathVariable Long customerId, @RequestBody UsersRequest userCustomerRequest) {
         try {
             customerService.addUserCustomer(customerId,userCustomerRequest);

@@ -1,8 +1,7 @@
 package com.example.LoginRegisterEmail.services;
 
 import com.example.LoginRegisterEmail.Requests.GenericMedicineRequest;
-import com.example.LoginRegisterEmail.Requests.UpdateMedicineRequest;
-import com.example.LoginRegisterEmail.entities.Generic;
+import com.example.LoginRegisterEmail.Requests.MedicineRequest;
 import com.example.LoginRegisterEmail.entities.Medicine;
 import com.example.LoginRegisterEmail.exceptions.MedicineNotFoundException;
 import com.example.LoginRegisterEmail.repository.GenericRepository;
@@ -25,12 +24,18 @@ public class MedicineService implements Serializable {
     private MedicineRepository medicineRepository;
     private GenericRepository genericRepository;
 
-    public Medicine addMedicine(Medicine medicine) {
-        return medicineRepository.save(medicine);
+    public Medicine addMedicine(MedicineRequest medicineRequest) {
+
+        Medicine medicines = new Medicine();
+        medicines.setMedicineName(medicineRequest.getMedicineName());
+        medicines.setMedicineDescription(medicineRequest.getMedicineDescription());
+        medicines.setMedicinePrice(medicineRequest.getMedicinePrice());
+        medicines.setMedicineQuantity(medicineRequest.getMedicineQuantity());
+        return medicineRepository.save(medicines);
     }
 
-    public Medicine findMedicineName(String medicineName) {
-        return medicineRepository.findByMedicineName(medicineName).orElseThrow(() -> new MedicineNotFoundException(medicineName + "was not found"));
+    public Medicine findMedicineName(MedicineRequest medicineName) {
+        return medicineRepository.findByMedicineName(medicineName.getMedicineName()).orElseThrow(() -> new MedicineNotFoundException(medicineName + "was not found"));
 
     }
 
@@ -47,7 +52,7 @@ public class MedicineService implements Serializable {
         medicineRepository.save(medicine);
     }
 
-    public Medicine updateMedicine(Long medicineId, UpdateMedicineRequest updatedMedicine) {
+    public Medicine updateMedicine(Long medicineId, MedicineRequest updatedMedicine) {
         Medicine existingMedicine = medicineRepository.findById(medicineId)
                 .orElseThrow(() -> new MedicineNotFoundException("Medicine not found with id: " + medicineId));
 

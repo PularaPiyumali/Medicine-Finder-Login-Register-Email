@@ -23,7 +23,7 @@ import java.util.Objects;
 @AllArgsConstructor
 @CrossOrigin
 @RequestMapping(path = "api/v1")
-public class UserRegistrationController {
+public class UserController {
 
     private RegistrationService registrationService;
     private JwtTokenUtil jwtTokenUtil;

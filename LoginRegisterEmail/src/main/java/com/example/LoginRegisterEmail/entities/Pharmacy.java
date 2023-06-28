@@ -23,14 +23,15 @@ public class Pharmacy {
     private Long pharmacyId;
     private String pharmacyName;
 
-    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JsonIgnore
-    private Set<Location> pharmacyLocation;
+//    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+//    @JsonIgnore
+//    private Set<Location> pharmacyLocation;
 
     //@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     //@JoinColumn(referencedColumnName = "pharmacyId")
     //@JsonIgnore
     private Long userId;
+
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "medicine_pharmacy",

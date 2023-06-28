@@ -1,5 +1,6 @@
 package com.example.LoginRegisterEmail.controllers;
 
+import com.example.LoginRegisterEmail.Requests.PharmacyRequest;
 import com.example.LoginRegisterEmail.Requests.UsersRequest;
 import com.example.LoginRegisterEmail.entities.Pharmacy;
 import com.example.LoginRegisterEmail.services.PharmacyService;
@@ -15,14 +16,14 @@ public class PharmacyController {
 
     private PharmacyService pharmacyService;
 
-    @PostMapping("/pharmacy/add")
-    public ResponseEntity<Pharmacy> addPharmacy (@RequestBody Pharmacy pharmacy)
+    @PostMapping("/pharmacies")
+    public ResponseEntity<Pharmacy> addPharmacy (@RequestBody PharmacyRequest pharmacyRequest)
     {
-        Pharmacy newPharmacy = pharmacyService.addPharmacy(pharmacy);
+        Pharmacy newPharmacy = pharmacyService.addPharmacy(pharmacyRequest);
         return new ResponseEntity<>(newPharmacy, HttpStatus.CREATED);
     }
 
-    @PutMapping("/{medicineId}/add/{pharmacyId}")
+    @PutMapping("/{medicineId}/pharmacies/{pharmacyId}")
     public ResponseEntity<String> addingMedicine(@PathVariable Long medicineId, @PathVariable Long pharmacyId) {
         try {
             pharmacyService.addingMedicine(medicineId, pharmacyId);
@@ -32,7 +33,7 @@ public class PharmacyController {
         }
     }
 
-    @PutMapping("/agent/{pharmacyId}")
+    @PutMapping("/agents/{pharmacyId}")
     public ResponseEntity<String> addUserPharmacyAgent(@PathVariable Long pharmacyId, @RequestBody UsersRequest usersRequest) {
         try {
             pharmacyService.addUserPharmacyAgent(pharmacyId,usersRequest);

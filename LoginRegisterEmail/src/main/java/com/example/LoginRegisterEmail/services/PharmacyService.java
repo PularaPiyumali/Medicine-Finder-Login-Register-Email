@@ -1,5 +1,6 @@
 package com.example.LoginRegisterEmail.services;
 
+import com.example.LoginRegisterEmail.Requests.PharmacyRequest;
 import com.example.LoginRegisterEmail.Requests.UsersRequest;
 import com.example.LoginRegisterEmail.entities.Generic;
 import com.example.LoginRegisterEmail.entities.Medicine;
@@ -22,7 +23,9 @@ public class PharmacyService implements Serializable {
     private MedicineRepository medicineRepository;
     private UserRepository userRepository;
 
-    public Pharmacy addPharmacy(Pharmacy pharmacy) {
+    public Pharmacy addPharmacy(PharmacyRequest pharmacyRequest) {
+        Pharmacy pharmacy = new Pharmacy();
+        pharmacy.setPharmacyName(pharmacyRequest.getPharmacyName());
         return pharmacyRepository.save(pharmacy);
     }
 
