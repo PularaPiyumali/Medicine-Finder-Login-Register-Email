@@ -1,5 +1,9 @@
 package com.example.LoginRegisterEmail.services;
 
+import com.example.LoginRegisterEmail.Requests.MedicineRequest;
+import com.example.LoginRegisterEmail.Requests.UserRequest;
+import com.example.LoginRegisterEmail.entities.Medicine;
+import com.example.LoginRegisterEmail.exceptions.MedicineNotFoundException;
 import com.example.LoginRegisterEmail.repository.UserRepository;
 import com.example.LoginRegisterEmail.entities.User;
 import com.example.LoginRegisterEmail.jwt.JwtTokenUtil;
@@ -8,6 +12,9 @@ import com.example.LoginRegisterEmail.registration.token.ConfirmationTokenServic
 import com.example.LoginRegisterEmail.utils.Util;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
+import org.springframework.beans.BeanWrapper;
+import org.springframework.beans.BeanWrapperImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -71,4 +78,36 @@ public class UserService implements UserDetailsService {
         });
     }
 
+    public User updateUserDetails(Long userId, UserRequest updatedUser) {
+
+        User existingUser = userRepository.findById(userId)
+                .orElseThrow(() -> new MedicineNotFoundException("User not found with id: " + userId));
+
+        BeanUtils.copyProperties(updatedUser, existingUser, getNullPropertyNames(updatedUser));
+
+        if (updatedUser.getFirstName() != null) {
+            existingUser.setFirstName(updatedUser.getFirstName());
+        }
+
+        existingUser.setLastName(updatedUser.getLastName());
+        existingUser.setMobileNo(updatedUser.getMobileNo());
+        existingUser.setEmail(updatedUser.getEmail());
+
+
+        return userRepository.save(existingUser);
+    }
+
+    private String[] getNullPropertyNames(Object source) {
+        final BeanWrapper src = new BeanWrapperImpl(source);
+        java.beans.PropertyDescriptor[] pds = src.getPropertyDescriptors();
+
+        Set<String> emptyNames = new HashSet<>();
+        for (java.beans.PropertyDescriptor pd : pds) {
+            Object srcValue = src.getPropertyValue(pd.getName());
+            if (srcValue == null) emptyNames.add(pd.getName());
+        }
+
+        String[] result = new String[emptyNames.size()];
+        return emptyNames.toArray(result);
+    }
 }

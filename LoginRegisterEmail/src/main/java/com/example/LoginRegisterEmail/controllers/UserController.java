@@ -1,10 +1,14 @@
 package com.example.LoginRegisterEmail.controllers;
 
 
+import com.example.LoginRegisterEmail.Requests.MedicineRequest;
+import com.example.LoginRegisterEmail.Requests.UserRequest;
+import com.example.LoginRegisterEmail.entities.Medicine;
 import com.example.LoginRegisterEmail.entities.User;
 import com.example.LoginRegisterEmail.jwt.*;
 import com.example.LoginRegisterEmail.registration.RegisterRequest;
 import com.example.LoginRegisterEmail.registration.RegistrationService;
+import com.example.LoginRegisterEmail.repository.UserRepository;
 import com.example.LoginRegisterEmail.services.UserService;
 import lombok.AllArgsConstructor;
 
@@ -16,6 +20,7 @@ import org.springframework.security.authentication.DisabledException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Objects;
 
 @Slf4j
@@ -29,6 +34,7 @@ public class UserController {
     private JwtTokenUtil jwtTokenUtil;
     private AuthenticationManager authenticationManager;
     private UserService customUserDetailsService;
+    private UserRepository userRepository;
 
 
     @PostMapping(path = "/registration")
@@ -60,6 +66,17 @@ public class UserController {
         } catch (BadCredentialsException e) {
             throw new Exception("INVALID_CREDENTIALS", e);
         }
+    }
+
+    @GetMapping("users/all")
+    public List<User> getAllMedicines() {
+        return userRepository.findAll();
+    }
+
+    @PutMapping("/users/{userId}")
+    public ResponseEntity <User> updateMedicine (@PathVariable Long userId, @RequestBody UserRequest updatedUser){
+        User updated = customUserDetailsService.updateUserDetails(userId, updatedUser);
+        return ResponseEntity.ok(updated);
     }
 
 }

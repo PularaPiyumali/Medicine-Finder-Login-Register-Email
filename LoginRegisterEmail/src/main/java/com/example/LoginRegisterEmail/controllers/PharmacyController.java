@@ -1,7 +1,7 @@
 package com.example.LoginRegisterEmail.controllers;
 
 import com.example.LoginRegisterEmail.Requests.PharmacyRequest;
-import com.example.LoginRegisterEmail.Requests.UsersRequest;
+import com.example.LoginRegisterEmail.Requests.UsersIdRequest;
 import com.example.LoginRegisterEmail.entities.Pharmacy;
 import com.example.LoginRegisterEmail.services.PharmacyService;
 import lombok.AllArgsConstructor;
@@ -34,7 +34,7 @@ public class PharmacyController {
     }
 
     @PutMapping("/agents/{pharmacyId}")
-    public ResponseEntity<String> addUserPharmacyAgent(@PathVariable Long pharmacyId, @RequestBody UsersRequest usersRequest) {
+    public ResponseEntity<String> addUserPharmacyAgent(@PathVariable Long pharmacyId, @RequestBody UsersIdRequest usersRequest) {
         try {
             pharmacyService.addUserPharmacyAgent(pharmacyId,usersRequest);
             return ResponseEntity.ok("Pharmacy Agent added successfully.");

@@ -25,7 +25,6 @@ public class RegistrationService {
             throw new IllegalStateException("email is not valid");
         }
         String token = userService.signUp( new User (request.getFirstName(),request.getLastName(),request.getMobileNo(),request.getEmail(),request.getPassword(),UserRole.CUSTOMER));
-
         String link = "http://localhost:8080/api/v1/confirm?token=" + token;
         emailSender.send(request.getEmail(),buildEmail(request.getFirstName(), link));
         return token;
@@ -40,7 +39,6 @@ public class RegistrationService {
         if (confirmationToken.getConfirmedAt() != null) {
             throw new IllegalStateException("email already confirmed");
         }
-
         LocalDateTime expiredAt = confirmationToken.getExpiresAt();
 
         if (expiredAt.isBefore(LocalDateTime.now())) {

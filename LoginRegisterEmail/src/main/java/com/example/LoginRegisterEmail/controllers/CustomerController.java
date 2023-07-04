@@ -1,7 +1,7 @@
 package com.example.LoginRegisterEmail.controllers;
 
 import com.example.LoginRegisterEmail.Requests.CustomerRequest;
-import com.example.LoginRegisterEmail.Requests.UsersRequest;
+import com.example.LoginRegisterEmail.Requests.UsersIdRequest;
 import com.example.LoginRegisterEmail.entities.Customer;
 import com.example.LoginRegisterEmail.services.CustomerService;
 import lombok.AllArgsConstructor;
@@ -26,7 +26,7 @@ public class CustomerController {
     }
 
     @PutMapping("customers/{customerId}")
-    public ResponseEntity<String> addUserCustomer(@PathVariable Long customerId, @RequestBody UsersRequest userCustomerRequest) {
+    public ResponseEntity<String> addUserCustomer(@PathVariable Long customerId, @RequestBody UsersIdRequest userCustomerRequest) {
         try {
             customerService.addUserCustomer(customerId,userCustomerRequest);
             return ResponseEntity.ok("Customer added successfully.");

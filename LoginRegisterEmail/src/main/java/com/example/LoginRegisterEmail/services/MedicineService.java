@@ -48,7 +48,7 @@ public class MedicineService implements Serializable {
     public void medicineWithGeneric(Long medicineId, GenericMedicineRequest genericMedicineRequest) {
         Medicine medicine = medicineRepository.findById(medicineId)
                 .orElseThrow(() -> new IllegalArgumentException("Medicine not found"));
-        medicine.setGenericId(genericMedicineRequest.getGenericId());
+        //medicine.setGenericId(genericMedicineRequest.getGenericId());
         medicineRepository.save(medicine);
     }
 

@@ -32,12 +32,11 @@ public class Medicine {
     @ManyToMany (mappedBy = "addingMedicine")
     private Set <Pharmacy> medicineSet = new HashSet<>();
 
-    //@ManyToOne(fetch = FetchType.EAGER)
-    //@JoinColumn(name = "generic_id", referencedColumnName = "medicineId")
-    //@JsonIgnore
-    //private Generic generic;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "medicine_generic_id", referencedColumnName = "genericId")
+    private Generic generic;
 
-    private Long genericId;
+    //private Long genericId;
 
 
 }

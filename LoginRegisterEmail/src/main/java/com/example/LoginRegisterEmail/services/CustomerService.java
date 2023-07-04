@@ -1,7 +1,7 @@
 package com.example.LoginRegisterEmail.services;
 
 import com.example.LoginRegisterEmail.Requests.CustomerRequest;
-import com.example.LoginRegisterEmail.Requests.UsersRequest;
+import com.example.LoginRegisterEmail.Requests.UsersIdRequest;
 import com.example.LoginRegisterEmail.entities.Customer;
 import com.example.LoginRegisterEmail.repository.CustomerRepository;
 import com.example.LoginRegisterEmail.repository.UserRepository;
@@ -22,7 +22,7 @@ public class CustomerService implements Serializable {
         return customerRepository.save(customer);
     }
 
-    public void addUserCustomer(Long customerId, UsersRequest userCustomerRequest) {
+    public void addUserCustomer(Long customerId, UsersIdRequest userCustomerRequest) {
 
         Customer customer = customerRepository.findById(customerId)
                 .orElseThrow(() -> new IllegalArgumentException("Pharmacy is not found"));

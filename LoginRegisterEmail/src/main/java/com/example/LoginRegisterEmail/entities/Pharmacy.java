@@ -27,10 +27,10 @@ public class Pharmacy {
 //    @JsonIgnore
 //    private Set<Location> pharmacyLocation;
 
-    //@OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    //@JoinColumn(referencedColumnName = "pharmacyId")
-    //@JsonIgnore
-    private Long userId;
+    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+    @JoinColumn(referencedColumnName = "userId")
+    @JsonIgnore
+    private User userId;
 
 
     @ManyToMany(cascade = CascadeType.ALL)

@@ -1,11 +1,9 @@
 package com.example.LoginRegisterEmail.services;
 
 import com.example.LoginRegisterEmail.Requests.PharmacyRequest;
-import com.example.LoginRegisterEmail.Requests.UsersRequest;
-import com.example.LoginRegisterEmail.entities.Generic;
+import com.example.LoginRegisterEmail.Requests.UsersIdRequest;
 import com.example.LoginRegisterEmail.entities.Medicine;
 import com.example.LoginRegisterEmail.entities.Pharmacy;
-import com.example.LoginRegisterEmail.entities.User;
 import com.example.LoginRegisterEmail.repository.MedicineRepository;
 import com.example.LoginRegisterEmail.repository.PharmacyRepository;
 import com.example.LoginRegisterEmail.repository.UserRepository;
@@ -40,11 +38,11 @@ public class PharmacyService implements Serializable {
         return pharmacyRepository.save(pharmacy);
     }
 
-    public void addUserPharmacyAgent(Long pharmacyId, UsersRequest usersRequest) {
+    public void addUserPharmacyAgent(Long pharmacyId, UsersIdRequest usersRequest) {
 
         Pharmacy pharmacy = pharmacyRepository.findById(pharmacyId)
                 .orElseThrow(() -> new IllegalArgumentException("Id not found"));
-        pharmacy.setUserId(usersRequest.getUserId());
+        //pharmacy.setUserId(usersRequest.getUserId());
         pharmacyRepository.save(pharmacy);
     }
 
