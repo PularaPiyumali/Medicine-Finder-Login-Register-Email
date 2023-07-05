@@ -5,6 +5,7 @@ import com.example.LoginRegisterEmail.Requests.MedicineRequest;
 import com.example.LoginRegisterEmail.Requests.UserRequest;
 import com.example.LoginRegisterEmail.entities.Medicine;
 import com.example.LoginRegisterEmail.entities.User;
+import com.example.LoginRegisterEmail.entities.UserRole;
 import com.example.LoginRegisterEmail.jwt.*;
 import com.example.LoginRegisterEmail.registration.RegisterRequest;
 import com.example.LoginRegisterEmail.registration.RegistrationService;
@@ -53,7 +54,14 @@ public class UserController {
         authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
         final User user = (User) customUserDetailsService.loadUserByUsername(authenticationRequest.getUsername());
         final String token = jwtTokenUtil.generateToken(user);
-        return ResponseEntity.ok(new JwtResponse(token));
+        //return ResponseEntity.ok(new JwtResponse(token));
+        final UserRole userRole = user.getUserRole(); // Assuming the user role is stored in the User object
+
+        // Create a response object that includes the token and user role
+        JwtResponse response = new JwtResponse(token, userRole);
+
+        return ResponseEntity.ok(response);
+
 
     }
     private void authenticate(String username, String password) throws Exception {

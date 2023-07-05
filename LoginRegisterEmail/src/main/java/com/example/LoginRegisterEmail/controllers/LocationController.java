@@ -4,11 +4,14 @@ import com.example.LoginRegisterEmail.Requests.LocationPharmacyRequest;
 import com.example.LoginRegisterEmail.Requests.LocationRequest;
 import com.example.LoginRegisterEmail.entities.Location;
 import com.example.LoginRegisterEmail.entities.Medicine;
+import com.example.LoginRegisterEmail.repository.LocationRepository;
 import com.example.LoginRegisterEmail.services.LocationService;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @AllArgsConstructor
@@ -17,6 +20,7 @@ import org.springframework.web.bind.annotation.*;
 public class LocationController {
 
     private LocationService locationService;
+    private LocationRepository locationRepository;
 
     @PostMapping("/locations")
     public ResponseEntity<Location> addLocation(@RequestBody LocationRequest locationRequest)
@@ -33,5 +37,10 @@ public class LocationController {
         } catch (IllegalArgumentException e) {
             return ResponseEntity.badRequest().body(e.getMessage());
         }
+    }
+
+    @GetMapping("locations/all")
+    public List<Location> getAllLocations() {
+        return locationRepository.findAll();
     }
 }

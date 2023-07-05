@@ -29,6 +29,8 @@ public class Medicine {
 
     private int medicineQuantity;
 
+    private String genericName;
+
     @ManyToMany (mappedBy = "addingMedicine")
     private Set <Pharmacy> medicineSet = new HashSet<>();
 

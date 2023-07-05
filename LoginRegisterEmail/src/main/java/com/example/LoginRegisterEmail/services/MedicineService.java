@@ -31,6 +31,7 @@ public class MedicineService implements Serializable {
         medicines.setMedicineDescription(medicineRequest.getMedicineDescription());
         medicines.setMedicinePrice(medicineRequest.getMedicinePrice());
         medicines.setMedicineQuantity(medicineRequest.getMedicineQuantity());
+        medicines.setGenericName(medicineRequest.getGenericName());
         return medicineRepository.save(medicines);
     }
 

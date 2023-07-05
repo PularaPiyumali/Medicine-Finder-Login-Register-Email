@@ -16,4 +16,6 @@ public class MedicineRequest {
     private double medicinePrice;
     @JsonProperty("medicine_quantity")
     private int medicineQuantity;
+    @JsonProperty("generic_name")
+    private String genericName;
 }

@@ -3,6 +3,7 @@ package com.example.LoginRegisterEmail.services;
 import com.example.LoginRegisterEmail.Requests.MedicineRequest;
 import com.example.LoginRegisterEmail.Requests.UserRequest;
 import com.example.LoginRegisterEmail.entities.Medicine;
+import com.example.LoginRegisterEmail.entities.UserRole;
 import com.example.LoginRegisterEmail.exceptions.MedicineNotFoundException;
 import com.example.LoginRegisterEmail.repository.UserRepository;
 import com.example.LoginRegisterEmail.entities.User;
@@ -109,5 +110,16 @@ public class UserService implements UserDetailsService {
 
         String[] result = new String[emptyNames.size()];
         return emptyNames.toArray(result);
+    }
+
+    public UserRole getUserRole(String email) {
+        Optional<User> userOptional = userRepository.findByEmail(email);
+
+        if (userOptional.isEmpty()) {
+            throw new IllegalArgumentException("User not found");
+        }
+
+        User user = userOptional.get();
+        return user.getUserRole();
     }
 }
