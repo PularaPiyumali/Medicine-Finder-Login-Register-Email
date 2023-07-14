@@ -29,6 +29,7 @@ public class Medicine {
 
     private String genericName;
 
+
     @ManyToMany (mappedBy = "addingMedicine")
     private Set <Pharmacy> medicineSet = new HashSet<>();
 
@@ -37,6 +38,8 @@ public class Medicine {
     private Generic generic;
 
     //private Long genericId;
+
+
 
 
 }

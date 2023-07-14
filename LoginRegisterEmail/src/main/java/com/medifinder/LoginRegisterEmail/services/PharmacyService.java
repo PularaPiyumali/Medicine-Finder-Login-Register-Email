@@ -28,14 +28,14 @@ public class PharmacyService implements Serializable {
     }
 
 
-    public Pharmacy addingMedicine (Long medicineId, Long pharmacyId) {
+    public void addingMedicine (Long medicineId, Long pharmacyId) {
         Set<Medicine> medicineSet = null;
         Medicine medicine = medicineRepository.findById(medicineId).get();
         Pharmacy pharmacy = pharmacyRepository.findById(pharmacyId).get();
         medicineSet =  pharmacy.getAddingMedicine();
         medicineSet.add(medicine);
         pharmacy.setAddingMedicine(medicineSet);
-        return pharmacyRepository.save(pharmacy);
+        pharmacyRepository.save(pharmacy);
     }
 
     public void addUserPharmacyAgent(Long pharmacyId, UsersIdRequest usersRequest) {

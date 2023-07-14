@@ -13,11 +13,11 @@ import java.util.Set;
 public class Customer {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long customerId;
     private String customerUsername;
 
-//    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+//    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 //    @JsonIgnore
 //    private User user;
 

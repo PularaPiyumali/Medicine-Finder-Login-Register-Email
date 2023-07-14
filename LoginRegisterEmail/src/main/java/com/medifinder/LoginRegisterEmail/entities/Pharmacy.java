@@ -23,11 +23,11 @@ public class Pharmacy {
     private Long pharmacyId;
     private String pharmacyName;
 
-//    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+//    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 //    @JsonIgnore
 //    private Set<Location> pharmacyLocation;
 
-//    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+//    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 //    @JoinColumn(referencedColumnName = "userId")
 //    @JsonIgnore
 //    private User userId;
@@ -36,8 +36,8 @@ public class Pharmacy {
 
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "medicine_pharmacy",
-            joinColumns = @JoinColumn(name = "medicineId"),
-            inverseJoinColumns = @JoinColumn(name = "pharmacyId")
+            joinColumns = @JoinColumn(name = "medicine_id"),
+            inverseJoinColumns = @JoinColumn(name = "pharmacy_id")
     )
     @JsonIgnore
     private Set<Medicine> addingMedicine = new HashSet<>();

@@ -30,7 +30,7 @@ public class Location {
 
     private Long pharmacyId;
 
-    //@ManyToOne (cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    //@ManyToOne (cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     //@JoinColumn(name = "pharmacy_id", referencedColumnName = "locationId")
     //private Pharmacy pharmacy;
 }

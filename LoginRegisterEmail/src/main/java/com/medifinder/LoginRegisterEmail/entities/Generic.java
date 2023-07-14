@@ -22,7 +22,7 @@ public class Generic {
 
     private String name;
 
-//    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
+//    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
 //    private Set <Medicine> medicine;
 
 }
