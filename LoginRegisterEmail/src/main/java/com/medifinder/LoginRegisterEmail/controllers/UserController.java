@@ -55,9 +55,8 @@ public class UserController {
         final User user = (User) customUserDetailsService.loadUserByUsername(authenticationRequest.getUsername());
         final String token = jwtTokenUtil.generateToken(user);
         //return ResponseEntity.ok(new JwtResponse(token));
-        final UserRole userRole = user.getUserRole(); // Assuming the user role is stored in the User object
+        final UserRole userRole = user.getUserRole();
 
-        // Create a response object that includes the token and user role
         JwtResponse response = new JwtResponse(token, userRole);
 
         return ResponseEntity.ok(response);
