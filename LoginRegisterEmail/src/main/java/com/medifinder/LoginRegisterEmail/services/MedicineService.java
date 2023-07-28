@@ -2,6 +2,8 @@ package com.medifinder.LoginRegisterEmail.services;
 
 import com.medifinder.LoginRegisterEmail.Requests.GenericMedicineRequest;
 import com.medifinder.LoginRegisterEmail.Requests.MedicineRequest;
+import com.medifinder.LoginRegisterEmail.Requests.PharmacyIdRequest;
+import com.medifinder.LoginRegisterEmail.entities.Customer;
 import com.medifinder.LoginRegisterEmail.entities.Medicine;
 import com.medifinder.LoginRegisterEmail.exceptions.MedicineNotFoundException;
 import com.medifinder.LoginRegisterEmail.repository.GenericRepository;
@@ -104,4 +106,10 @@ public class MedicineService implements Serializable {
         return emptyNames.toArray(result);
     }
 
+    public void addPharmacyMedicine(Long medicineId, PharmacyIdRequest pharmacyIdRequest) {
+        Medicine medicine = medicineRepository.findById(medicineId)
+                .orElseThrow(() -> new IllegalArgumentException("Pharmacy is not found"));
+        medicine.setPharmacyId(pharmacyIdRequest.getPharmacyId());
+        medicineRepository.save(medicine);
+    }
 }

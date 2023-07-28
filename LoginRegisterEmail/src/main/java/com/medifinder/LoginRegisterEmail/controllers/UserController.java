@@ -3,7 +3,7 @@ package com.medifinder.LoginRegisterEmail.controllers;
 
 import com.medifinder.LoginRegisterEmail.Requests.UserRequest;
 import com.medifinder.LoginRegisterEmail.entities.User;
-import com.medifinder.LoginRegisterEmail.entities.UserRole;
+import com.medifinder.LoginRegisterEmail.enums.UserRole;
 
 import com.medifinder.LoginRegisterEmail.registration.RegisterRequest;
 import com.medifinder.LoginRegisterEmail.registration.RegistrationService;
@@ -39,9 +39,10 @@ public class UserController {
 
 
     @PostMapping(path = "/registration")
-    public String register (@RequestBody RegisterRequest request){
+    public JwtResponse register (@RequestBody RegisterRequest request){
         return registrationService.register(request);
     }
+
 
     @GetMapping(path = "confirm")
     public String confirm(@RequestParam("token") String token) {
@@ -54,7 +55,6 @@ public class UserController {
         authenticate(authenticationRequest.getUsername(), authenticationRequest.getPassword());
         final User user = (User) customUserDetailsService.loadUserByUsername(authenticationRequest.getUsername());
         final String token = jwtTokenUtil.generateToken(user);
-        //return ResponseEntity.ok(new JwtResponse(token));
         final UserRole userRole = user.getUserRole();
 
         JwtResponse response = new JwtResponse(token, userRole);
@@ -76,12 +76,12 @@ public class UserController {
     }
 
     @GetMapping("users/all")
-    public List<User> getAllMedicines() {
+    public List<User> getAllUsers() {
         return userRepository.findAll();
     }
 
     @PutMapping("/users/{userId}")
-    public ResponseEntity <User> updateMedicine (@PathVariable Long userId, @RequestBody UserRequest updatedUser){
+    public ResponseEntity <User> updateUsers (@PathVariable Long userId, @RequestBody UserRequest updatedUser){
         User updated = customUserDetailsService.updateUserDetails(userId, updatedUser);
         return ResponseEntity.ok(updated);
     }

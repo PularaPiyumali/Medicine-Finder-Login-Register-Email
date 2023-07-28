@@ -1,8 +1,6 @@
 package com.medifinder.LoginRegisterEmail.controllers;
 
-import com.medifinder.LoginRegisterEmail.Requests.GenericMedicineRequest;
-import com.medifinder.LoginRegisterEmail.Requests.GenericRequest;
-import com.medifinder.LoginRegisterEmail.Requests.MedicineRequest;
+import com.medifinder.LoginRegisterEmail.Requests.*;
 import com.medifinder.LoginRegisterEmail.entities.Generic;
 import com.medifinder.LoginRegisterEmail.entities.Medicine;
 import com.medifinder.LoginRegisterEmail.repository.MedicineRepository;
@@ -72,5 +70,15 @@ public class MedicineController {
     @GetMapping("medicines/all")
     public List<Medicine> getAllMedicines() {
         return medicineRepository.findAll();
+    }
+
+    @PutMapping("pharmacies/{medicineId}")
+    public ResponseEntity<String> addPharmacyMedicine(@PathVariable Long medicineId, @RequestBody PharmacyIdRequest pharmacyIdRequest) {
+        try {
+            medicineService.addPharmacyMedicine(medicineId,pharmacyIdRequest);
+            return ResponseEntity.ok("Pharmacy Id added successfully.");
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 }

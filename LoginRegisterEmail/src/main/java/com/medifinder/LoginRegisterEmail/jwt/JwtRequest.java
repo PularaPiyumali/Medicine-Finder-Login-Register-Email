@@ -3,7 +3,6 @@ package com.medifinder.LoginRegisterEmail.jwt;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 
-
 @AllArgsConstructor
 @NoArgsConstructor
 public class JwtRequest {

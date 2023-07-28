@@ -1,4 +1,4 @@
-package com.medifinder.LoginRegisterEmail.entities;
+package com.medifinder.LoginRegisterEmail.enums;
 
 public enum UserRole {
 

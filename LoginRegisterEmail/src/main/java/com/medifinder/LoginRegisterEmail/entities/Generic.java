@@ -19,10 +19,6 @@ public class Generic {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long genericId;
-
     private String name;
-
-//    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-//    private Set <Medicine> medicine;
 
 }

@@ -19,10 +19,7 @@ public class LocationService implements Serializable {
     private PharmacyRepository pharmacyRepository;
 
     public Location addLocation(LocationRequest locationRequest) {
-        Location location = new Location();
-        location.setAddress(locationRequest.getAddress());
-        location.setCity(locationRequest.getCity());
-        location.setLatitude(locationRequest.getLatitude());
+        Location location = new Location();location.setLatitude(locationRequest.getLatitude());
         location.setLongitude(locationRequest.getLongitude());
             return locationRepository.save(location);
     }

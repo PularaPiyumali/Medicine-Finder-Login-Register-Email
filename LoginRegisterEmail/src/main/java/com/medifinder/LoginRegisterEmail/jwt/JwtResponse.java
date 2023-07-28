@@ -1,6 +1,6 @@
 package com.medifinder.LoginRegisterEmail.jwt;
 
-import com.medifinder.LoginRegisterEmail.entities.UserRole;
+import com.medifinder.LoginRegisterEmail.enums.UserRole;
 import lombok.NoArgsConstructor;
 
 

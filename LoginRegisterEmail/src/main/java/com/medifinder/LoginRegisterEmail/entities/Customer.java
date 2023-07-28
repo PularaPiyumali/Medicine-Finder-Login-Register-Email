@@ -16,10 +16,5 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long customerId;
     private String customerUsername;
-
-//    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-//    @JsonIgnore
-//    private User user;
-
     private Long userId;
 }

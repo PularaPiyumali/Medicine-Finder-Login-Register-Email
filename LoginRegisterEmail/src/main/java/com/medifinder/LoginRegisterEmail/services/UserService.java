@@ -1,7 +1,7 @@
 package com.medifinder.LoginRegisterEmail.services;
 
 import com.medifinder.LoginRegisterEmail.Requests.UserRequest;
-import com.medifinder.LoginRegisterEmail.entities.UserRole;
+import com.medifinder.LoginRegisterEmail.enums.UserRole;
 import com.medifinder.LoginRegisterEmail.exceptions.MedicineNotFoundException;
 import com.medifinder.LoginRegisterEmail.repository.UserRepository;
 import com.medifinder.LoginRegisterEmail.entities.User;
@@ -68,7 +68,7 @@ public class UserService implements UserDetailsService {
         return token;
     }
 
-    @Transactional
+
     public void enableAppUser(String email) {
         Optional<User> optionalUser = userRepository.findByEmail(email);
         optionalUser.ifPresent(user -> {

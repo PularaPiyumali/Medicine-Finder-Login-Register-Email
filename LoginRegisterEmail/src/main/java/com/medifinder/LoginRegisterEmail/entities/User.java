@@ -1,5 +1,6 @@
 package com.medifinder.LoginRegisterEmail.entities;
 
+import com.medifinder.LoginRegisterEmail.enums.UserRole;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;

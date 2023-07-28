@@ -1,7 +1,8 @@
 package com.medifinder.LoginRegisterEmail.registration;
 
 import com.medifinder.LoginRegisterEmail.entities.User;
-import com.medifinder.LoginRegisterEmail.entities.UserRole;
+import com.medifinder.LoginRegisterEmail.enums.UserRole;
+import com.medifinder.LoginRegisterEmail.jwt.JwtResponse;
 import com.medifinder.LoginRegisterEmail.registration.token.Confirmation;
 import com.medifinder.LoginRegisterEmail.registration.token.ConfirmationTokenService;
 import com.medifinder.LoginRegisterEmail.services.UserService;
@@ -19,18 +20,18 @@ public class RegistrationService {
     private EmailValidator emailValidator;
     private ConfirmationTokenService confirmationTokenService;
     private EmailSender emailSender;
-    public String register(RegisterRequest request) {
+    public JwtResponse register(RegisterRequest request) {
         boolean isValidEmail = emailValidator.test(request.getEmail());
         if (!isValidEmail){
             throw new IllegalStateException("email is not valid");
         }
         String token = userService.signUp( new User(request.getFirstName(),request.getLastName(),request.getMobileNo(),request.getEmail(),request.getPassword(),UserRole.ADMIN));
-        //UserRole userRole = userService.getUserRole(request.getEmail());
+        UserRole userRole = userService.getUserRole(request.getEmail());
 
         String link = "http://localhost:8080/api/v1/confirm?token=" + token;
         emailSender.send(request.getEmail(),buildEmail(request.getFirstName(), link));
-        return token;
-        //return userRole.toString();
+        String output = userRole.toString() + "\n" + token;
+        return new JwtResponse(token, userRole);
     }
 
     @Transactional

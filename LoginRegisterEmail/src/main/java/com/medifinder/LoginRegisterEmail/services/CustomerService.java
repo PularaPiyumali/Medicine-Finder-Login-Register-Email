@@ -25,7 +25,7 @@ public class CustomerService implements Serializable {
     public void addUserCustomer(Long customerId, UsersIdRequest userCustomerRequest) {
 
         Customer customer = customerRepository.findById(customerId)
-                .orElseThrow(() -> new IllegalArgumentException("Pharmacy is not found"));
+                .orElseThrow(() -> new IllegalArgumentException("User is not found"));
         customer.setUserId(userCustomerRequest.getUserId());
         customerRepository.save(customer);
     }

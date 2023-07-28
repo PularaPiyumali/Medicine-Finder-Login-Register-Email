@@ -22,16 +22,7 @@ public class Pharmacy {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long pharmacyId;
     private String pharmacyName;
-
-//    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-//    @JsonIgnore
-//    private Set<Location> pharmacyLocation;
-
-//    @OneToOne(cascade = CascadeType.ALL,fetch = FetchType.LAZY)
-//    @JoinColumn(referencedColumnName = "userId")
-//    @JsonIgnore
-//    private User userId;
-      private Long userId;
+    private Long userId;
 
 
     @ManyToMany(cascade = CascadeType.ALL)

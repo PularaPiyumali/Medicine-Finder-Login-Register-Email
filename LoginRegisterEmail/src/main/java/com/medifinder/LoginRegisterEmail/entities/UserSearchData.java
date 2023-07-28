@@ -21,5 +21,6 @@ public class UserSearchData {
     private Long id;
     private String searchName;
     private LocalDateTime timestamp;
+    private Long medicineId;
 
 }

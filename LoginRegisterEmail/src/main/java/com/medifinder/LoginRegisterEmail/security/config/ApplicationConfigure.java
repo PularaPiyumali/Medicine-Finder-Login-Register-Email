@@ -2,7 +2,9 @@ package com.medifinder.LoginRegisterEmail.security.config;
 
 import com.medifinder.LoginRegisterEmail.repository.UserRepository;
 import com.medifinder.LoginRegisterEmail.security.PasswordEncoder;
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -13,7 +15,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 @Configuration
-@RequiredArgsConstructor
+@AllArgsConstructor
 public class ApplicationConfigure {
 
     private final UserRepository userRepository;

@@ -1,7 +1,7 @@
 package com.medifinder.LoginRegisterEmail.registration;
 
 
-import com.medifinder.LoginRegisterEmail.entities.UserRole;
+import com.medifinder.LoginRegisterEmail.enums.UserRole;
 import lombok.*;
 
 @Data
