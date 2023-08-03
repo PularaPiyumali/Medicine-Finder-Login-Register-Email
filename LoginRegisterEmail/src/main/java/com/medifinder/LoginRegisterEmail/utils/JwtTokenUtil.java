@@ -1,4 +1,4 @@
-package com.medifinder.LoginRegisterEmail.jwt;
+package com.medifinder.LoginRegisterEmail.utils;
 
 import com.medifinder.LoginRegisterEmail.entities.User;
 import org.springframework.beans.factory.annotation.Autowired;

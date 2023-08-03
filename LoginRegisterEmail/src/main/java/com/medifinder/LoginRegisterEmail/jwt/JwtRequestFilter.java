@@ -3,6 +3,7 @@ package com.medifinder.LoginRegisterEmail.jwt;
 import java.io.IOException;
 
 import com.medifinder.LoginRegisterEmail.entities.User;
+import com.medifinder.LoginRegisterEmail.utils.JwtTokenUtil;
 import io.jsonwebtoken.ExpiredJwtException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

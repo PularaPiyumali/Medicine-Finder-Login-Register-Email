@@ -5,12 +5,12 @@ import com.medifinder.LoginRegisterEmail.Requests.UserRequest;
 import com.medifinder.LoginRegisterEmail.entities.User;
 import com.medifinder.LoginRegisterEmail.enums.UserRole;
 
-import com.medifinder.LoginRegisterEmail.registration.RegisterRequest;
-import com.medifinder.LoginRegisterEmail.registration.RegistrationService;
+import com.medifinder.LoginRegisterEmail.Requests.RegisterRequest;
+import com.medifinder.LoginRegisterEmail.services.RegistrationService;
 import com.medifinder.LoginRegisterEmail.repository.UserRepository;
 import com.medifinder.LoginRegisterEmail.services.UserService;
 import com.medifinder.LoginRegisterEmail.jwt.JwtResponse;
-import com.medifinder.LoginRegisterEmail.jwt.JwtTokenUtil;
+import com.medifinder.LoginRegisterEmail.utils.JwtTokenUtil;
 import lombok.AllArgsConstructor;
 
 import lombok.extern.slf4j.Slf4j;

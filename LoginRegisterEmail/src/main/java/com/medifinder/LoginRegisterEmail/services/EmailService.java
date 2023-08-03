@@ -1,6 +1,6 @@
 package com.medifinder.LoginRegisterEmail.services;
 
-import com.medifinder.LoginRegisterEmail.registration.EmailSender;
+import com.medifinder.LoginRegisterEmail.email.EmailSender;
 import jakarta.mail.internet.MimeMessage;
 import lombok.AllArgsConstructor;
 import org.slf4j.Logger;

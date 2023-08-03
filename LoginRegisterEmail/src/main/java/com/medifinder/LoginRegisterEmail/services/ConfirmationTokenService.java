@@ -1,5 +1,7 @@
-package com.medifinder.LoginRegisterEmail.registration.token;
+package com.medifinder.LoginRegisterEmail.services;
 
+import com.medifinder.LoginRegisterEmail.entities.Confirmation;
+import com.medifinder.LoginRegisterEmail.repository.ConfirmationTokenRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 

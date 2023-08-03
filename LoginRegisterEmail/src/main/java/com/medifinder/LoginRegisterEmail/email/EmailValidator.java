@@ -1,4 +1,4 @@
-package com.medifinder.LoginRegisterEmail.registration;
+package com.medifinder.LoginRegisterEmail.email;
 
 import org.springframework.stereotype.Service;
 

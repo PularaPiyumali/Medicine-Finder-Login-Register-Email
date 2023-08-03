@@ -1,5 +1,6 @@
-package com.medifinder.LoginRegisterEmail.registration.token;
+package com.medifinder.LoginRegisterEmail.repository;
 
+import com.medifinder.LoginRegisterEmail.entities.Confirmation;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;

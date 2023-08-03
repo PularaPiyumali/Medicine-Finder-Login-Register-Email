@@ -1,11 +1,12 @@
-package com.medifinder.LoginRegisterEmail.registration;
+package com.medifinder.LoginRegisterEmail.services;
 
+import com.medifinder.LoginRegisterEmail.Requests.RegisterRequest;
 import com.medifinder.LoginRegisterEmail.entities.User;
 import com.medifinder.LoginRegisterEmail.enums.UserRole;
 import com.medifinder.LoginRegisterEmail.jwt.JwtResponse;
-import com.medifinder.LoginRegisterEmail.registration.token.Confirmation;
-import com.medifinder.LoginRegisterEmail.registration.token.ConfirmationTokenService;
-import com.medifinder.LoginRegisterEmail.services.UserService;
+import com.medifinder.LoginRegisterEmail.email.EmailSender;
+import com.medifinder.LoginRegisterEmail.email.EmailValidator;
+import com.medifinder.LoginRegisterEmail.entities.Confirmation;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

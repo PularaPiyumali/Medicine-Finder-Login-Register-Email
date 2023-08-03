@@ -1,4 +1,4 @@
-package com.medifinder.LoginRegisterEmail.jwt;
+package com.medifinder.LoginRegisterEmail.Requests;
 
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;

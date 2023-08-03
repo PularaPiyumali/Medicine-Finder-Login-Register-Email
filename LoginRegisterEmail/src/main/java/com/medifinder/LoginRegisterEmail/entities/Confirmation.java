@@ -1,4 +1,4 @@
-package com.medifinder.LoginRegisterEmail.registration.token;
+package com.medifinder.LoginRegisterEmail.entities;
 
 import com.medifinder.LoginRegisterEmail.entities.User;
 import jakarta.persistence.*;

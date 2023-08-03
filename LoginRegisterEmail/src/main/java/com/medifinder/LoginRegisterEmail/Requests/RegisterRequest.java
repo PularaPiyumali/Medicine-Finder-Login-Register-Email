@@ -1,4 +1,4 @@
-package com.medifinder.LoginRegisterEmail.registration;
+package com.medifinder.LoginRegisterEmail.Requests;
 
 
 import com.medifinder.LoginRegisterEmail.enums.UserRole;
